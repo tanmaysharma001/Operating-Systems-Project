@@ -10,6 +10,27 @@ struct lotteryprocess
 	int size;
 	int firstticket, lastticket;
 	int tickets[100];
+	
+	void insertticket()
+	{
+	int j=0;
+	int i;
+		for(i=firstticket;i<lastticket;i++)
+		{
+			tickets[j]=i;
+			j++;
+		}
+	}
+	void printticket()
+	{
+	int j=0;
+	int i;
+		for(i=firstticket;i<lastticket;i++)
+		{
+			printf("%d ",tickets[j]);
+			j++;
+		}	
+	}
 
 };
  	int main()
