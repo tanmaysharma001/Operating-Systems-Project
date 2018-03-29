@@ -31,6 +31,21 @@ struct lotteryprocess
 			j++;
 		}	
 	}
+	
+	int searchticket(int q)
+	{
+	int j=0,c=0;
+	int i; 
+		for(i=firstticket;i<lastticket;i++)
+		{
+			if(tickets[j]==q)
+		{
+		return 1;
+		}
+			j++;
+		}
+	return 0;
+	}
 
 };
  	int main()
@@ -79,3 +94,66 @@ struct lotteryprocess
 		x=(rand()%25);
 		printf("The random number generated is %d \n",x);
 		int i;
+		for(i=0;i<n;i++)	
+		{	
+		printf("Enter the process id for %d process  ",i+1);
+		scanf("%d",&p[i].processid);
+		printf("Enter the Burst Time for %d process  ",(i+1));
+		scanf("%d",&p[i].bursttime);
+		p[i].wait=0;
+		printf("Enter  the ending number of  ticket for %d process ranging from from  %d  to 200  ",i+1,ts);
+		scanf("%d",&te);
+		p[i].firstticket=ts;
+		p[i].lastticket=te;
+		size1=te-ts;
+		p[i].size=size1;
+		p[i].insertticket();
+		ts=te;
+		}
+		for(i=0;i<n;i++)
+		{
+		printf("Process id for %d process is  %d \n",i+1,p[i].processid);
+		printf("Burst Time for %d process is  %d \n",i+1,p[i].bursttime);	
+		printf("Burst Time for %d process is  %d \n",i+1,p[i].wait);
+		printf("Number of tickets %d process have  %d \n",i+1,p[i].size);
+		printf("Range of tickets for %d process is \n",i+1);
+		p[i].printticket(); 
+		printf("\n");
+
+		}
+		int x,l,tslice;
+
+		printf("Enter the Time Slice ");
+		scanf("%d",&tslice);
+		int k;
+		for(k=0;k<15;k++)
+		{
+		x=(rand()%25);
+		printf("The random number generated is %d \n",x);
+		int i;
+		for(i=0;i<n;i++)
+		{
+
+		l=p[i].searchticket(x);
+		if(l==1)
+		{
+		if(p[i].bursttime<=0)
+		{
+		printf("Process with Process id %d is already executed completely \n",p[i].processid);
+		}
+		else
+		{
+		p[i].bursttime=p[i].bursttime-tslice;
+		if(p[i].bursttime<0)
+		printf("Remaining burst time for process with process id %d is 0",p[i].processid);
+		else
+		printf("Remaining burst time for process with process id %d is %d \n",p[i].processid,p[i].bursttime);
+		}
+
+		}	
+		else
+		continue;
+		}
+		}
+	}
+
