@@ -58,3 +58,24 @@ struct lotteryprocess
 		p[i].insertticket();
 		ts=te;
 		}
+		for(i=0;i<n;i++)
+		{
+		printf("Process id for %d process is  %d \n",i+1,p[i].processid);
+		printf("Burst Time for %d process is  %d \n",i+1,p[i].bursttime);	
+		printf("Burst Time for %d process is  %d \n",i+1,p[i].wait);
+		printf("Number of tickets %d process have  %d \n",i+1,p[i].size);
+		printf("Range of tickets for %d process is \n",i+1);
+		p[i].printticket(); 
+		printf("\n");
+
+		}
+		int x,l,tslice;
+
+		printf("Enter the Time Slice ");
+		scanf("%d",&tslice);
+		int k;
+		for(k=0;k<15;k++)
+		{
+		x=(rand()%25);
+		printf("The random number generated is %d \n",x);
+		int i;
